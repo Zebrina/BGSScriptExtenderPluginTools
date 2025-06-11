@@ -1,1 +1,1 @@
-# ScriptExtenderPluginTools
+# BGSScriptExtenderPluginTools
