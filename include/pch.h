@@ -15,12 +15,13 @@
 #include <TlHelp32.h>
 
 #include <spdlog/spdlog.h>
+
 #include <spdlog/sinks/basic_file_sink.h>
 #ifndef NDEBUG
 #include <spdlog/sinks/msvc_sink.h>
 #endif
 
-#include <tomlplusplus/toml.hpp>
+#include <toml++/toml.hpp>
 
 #include <string>
 #include <string_view>
