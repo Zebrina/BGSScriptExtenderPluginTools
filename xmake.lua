@@ -15,7 +15,7 @@ set_encodings("utf-8")
 
 add_rules("mode.debug", "mode.release")
 
-target("BGSScriptExtenderPluginTools", function()
+target("BGSScriptExtenderPluginTools")
 
     set_kind("static")
 
@@ -31,9 +31,10 @@ target("BGSScriptExtenderPluginTools", function()
     set_pcxxheader("include/PCH.h")
     add_forceincludes("pch.h")
 
-    -- add flags
-    add_cxxflags("/EHsc", "/permissive-", { public = true })
+    -- flags
 
+    add_cxxflags("/EHsc", "/permissive-", { public = true })
+    
     add_cxxflags(
         "cl::/bigobj",
         "cl::/cgthreads8",
@@ -59,5 +60,3 @@ target("BGSScriptExtenderPluginTools", function()
         "cl::/we4715", -- not all control paths return a value
         { public = true }
     )
-
-end)
