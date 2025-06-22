@@ -23,7 +23,7 @@ target("BGSScriptExtenderPluginTools")
     add_headerfiles("include/**.h")
     add_includedirs("include")
     -- toml
-    add_includedirs("../tomlplusplus/include")
+    add_includedirs("external/tomlplusplus/include")
 
     add_packages("spdlog")
 
