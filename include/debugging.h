@@ -10,18 +10,7 @@
 
 namespace debug
 {
-    __forceinline void WaitForDebugger()
-    {
-#ifndef NDEBUG
-        if (!(GetKeyState(VK_CONTROL) & 0x8000))
-            return;
-
-        while (!IsDebuggerPresent())
-            Sleep(10);
-
-        Sleep(2000);
-#endif
-    }
+    void WaitForDebugger();
 
 #ifdef COMMONLIB_STUFF
     template<class T>

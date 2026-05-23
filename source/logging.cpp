@@ -1,6 +1,6 @@
 #include "logging.h"
 
-//#include <fmt/format.h>
+#include "windows_lean_and_mean.h"
 
 namespace plugin_log
 {
@@ -11,7 +11,7 @@ namespace plugin_log
         if (length == 0)
             return false;
 
-        auto path = fmt::format("{}\\{}.log"sv, directory, name);
+        auto path = spdlog::fmt_lib::format("{}\\{}.log"sv, directory, name);
 
 #ifndef NDEBUG
         auto vssink = std::make_shared<spdlog::sinks::msvc_sink_mt>();

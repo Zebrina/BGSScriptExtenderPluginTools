@@ -2,6 +2,8 @@
 
 #include "logging.h"
 
+#include "windows_lean_and_mean.h"
+
 namespace reverse_engineering
 {
     uintptr_t signature::get_offset() const
@@ -90,7 +92,7 @@ namespace reverse_engineering
         entry.dwSize = sizeof(MODULEENTRY32);
 
         int attempt = 0;
-        constexpr size_t NUM_RETRY_COUNT = 3;
+        constexpr const size_t NUM_RETRY_COUNT = 3;
         while (!Module32First(hSnapshot, &entry))
         {
             // https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot
@@ -119,7 +121,8 @@ namespace reverse_engineering
                 CloseHandle(hSnapshot);
                 break;
             }
-        } while (Module32Next(hSnapshot, &entry));
+        }
+        while (Module32Next(hSnapshot, &entry));
 
         if (size == 0)
         {

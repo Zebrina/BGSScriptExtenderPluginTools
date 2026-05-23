@@ -2,8 +2,6 @@
 
 #include "pch.h"
 
-#include <spdlog/common.h>
-
 #include <source_location>
 
 #pragma push_macro("MAKE_LOGGER")
@@ -36,7 +34,7 @@ namespace plugin_log
     bool initialize(const std::string_view& name, const std::string& pattern = "%s(%#): [%^%l%$] %v"s);
 
     template <class... Args>
-    void log(const std::source_location& source_loc, spdlog::level::level_enum level,
+    inline void log(const std::source_location& source_loc, spdlog::level::level_enum level,
         spdlog::format_string_t<Args...> format, Args&&... args)
     {
         spdlog::log(

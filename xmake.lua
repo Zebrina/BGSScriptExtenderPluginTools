@@ -1,10 +1,8 @@
 -- minimum xmake version
 set_xmakever("2.8.2")
 
-add_repositories("libxse-xrepo https://github.com/libxse/libxse-xrepo")
-
 -- dependencies
-add_requires("spdlog")
+add_requires("spdlog", { configs = { header_only = false, wchar = true, std_format = true } })
 
 set_project("BGSScriptExtenderPluginTools")
 set_version("1.0.0")
@@ -13,7 +11,7 @@ set_languages("c++23")
 set_warnings("allextra")
 set_encodings("utf-8")
 
-add_rules("mode.debug", "mode.release")
+add_rules("mode.debug", "mode.releasedbg")
 
 target("BGSScriptExtenderPluginTools")
 
@@ -21,14 +19,14 @@ target("BGSScriptExtenderPluginTools")
 
     add_files("source/**.cpp")
     add_headerfiles("include/**.h")
-    add_includedirs("include")
+    add_includedirs("include", { public = true })
     -- toml
-    add_includedirs("external/tomlplusplus/include")
+    add_includedirs("external/tomlplusplus/include", { public = true })
 
-    add_packages("spdlog")
+    add_packages("spdlog", { public = true })
 
     -- precompiled header
-    set_pcxxheader("include/PCH.h")
+    set_pcxxheader("include/pch.h")
     add_forceincludes("pch.h")
 
     -- flags
